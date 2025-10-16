@@ -1,3 +1,4 @@
+/* --- Configurações Globais e Tema --- */
 :root {
     --bg-color: #121212;
     --primary-surface-color: #1E1E1E;
@@ -25,7 +26,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
-    padding: 40px 20px;
+    padding: 20px 15px; /* Ajustado para melhor visualização em telas pequenas */
 }
 
 /* --- Container Principal da Aplicação --- */
@@ -34,7 +35,7 @@ body {
     max-width: 800px;
     background-color: var(--primary-surface-color);
     border-radius: 16px;
-    padding: 32px;
+    padding: 24px; /* Ajustado para melhor visualização em telas pequenas */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
@@ -46,7 +47,7 @@ header {
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-size: 2rem; /* Ajustado para caber melhor em telas menores */
     margin-bottom: 16px;
 }
 
@@ -91,7 +92,7 @@ header h1 {
     display: flex;
     gap: 12px;
     margin-bottom: 32px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a linha de baixo */
 }
 
 #task-form input, #task-form select, #task-form button {
@@ -102,6 +103,7 @@ header h1 {
     font-family: var(--font-family);
     background-color: var(--secondary-surface-color);
     color: var(--primary-text-color);
+    flex-shrink: 0; /* Impede que os itens encolham demais */
 }
 
 #task-form input::placeholder {
@@ -113,7 +115,8 @@ header h1 {
 }
 
 #task-form input[type="text"] {
-    flex-grow: 1;
+    flex-grow: 1; /* Permite que o campo de texto cresça */
+    min-width: 150px; /* Garante um tamanho mínimo antes de quebrar a linha */
 }
 
 #task-form button {
@@ -131,14 +134,8 @@ header h1 {
 /* --- Listas de Tarefas --- */
 .tasks-wrapper {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Começa com uma coluna por padrão (mobile-first) */
     gap: 32px;
-}
-
-@media (min-width: 768px) {
-    .tasks-wrapper {
-        grid-template-columns: 1fr 1fr;
-    }
 }
 
 .task-list-section h2 {
@@ -161,6 +158,7 @@ ul {
     padding: 16px;
     border-radius: 8px;
     transition: background-color 0.2s ease;
+    word-break: break-word; /* Garante que textos longos não quebrem o layout */
 }
 
 .task-item.completed .task-text-content {
@@ -190,6 +188,7 @@ ul {
 .task-metadata {
     display: flex;
     align-items: center;
+    flex-wrap: wrap; /* Permite que os metadados quebrem a linha se necessário */
     gap: 10px;
     margin-top: 6px;
 }
@@ -213,4 +212,39 @@ ul {
 
 .delete-btn:hover {
     color: var(--danger-color);
+}
+
+
+/* --- ######################### --- */
+/* --- ESTILOS RESPONSIVOS --- */
+/* --- ######################### --- */
+
+/* Para tablets e desktops (telas maiores que 768px) */
+@media (min-width: 768px) {
+    body {
+        padding: 40px 20px; /* Volta o padding maior para telas grandes */
+    }
+
+    .app-container {
+        padding: 32px; /* Volta o padding maior */
+    }
+
+    header h1 {
+        font-size: 2.5rem; /* Aumenta o título principal de volta */
+    }
+
+    .tasks-wrapper {
+        grid-template-columns: 1fr 1fr; /* Divide as listas em duas colunas */
+    }
+}
+
+/* Para celulares muito pequenos (telas menores que 400px) */
+@media (max-width: 400px) {
+    #task-form {
+        flex-direction: column; /* Força os itens do formulário a ficarem um abaixo do outro */
+    }
+
+    #task-form input, #task-form select, #task-form button {
+        width: 100%; /* Faz com que todos ocupem a largura total */
+    }
 }
