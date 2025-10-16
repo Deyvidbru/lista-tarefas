@@ -1,0 +1,216 @@
+:root {
+    --bg-color: #121212;
+    --primary-surface-color: #1E1E1E;
+    --secondary-surface-color: #2a2a2a;
+    --primary-text-color: #E0E0E0;
+    --secondary-text-color: #A0A0A0;
+    --accent-color: #007BFF;
+    --accent-color-hover: #0056b3;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/* --- Container Principal da Aplicação --- */
+.app-container {
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--primary-surface-color);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+header {
+    text-align: center;
+    border-bottom: 1px solid var(--secondary-surface-color);
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+/* --- Barra de Progresso --- */
+.progress-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.progress-container p {
+    font-size: 0.9rem;
+    color: var(--secondary-text-color);
+    margin-bottom: 8px;
+}
+
+.progress-bar-background {
+    width: 100%;
+    height: 12px;
+    background-color: var(--secondary-surface-color);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background-color: var(--accent-color);
+    border-radius: 6px;
+    transition: width 0.3s ease-in-out;
+}
+
+#progressText {
+    font-weight: 500;
+    color: var(--accent-color);
+    margin-top: 8px;
+    display: block;
+}
+
+/* --- Formulário de Tarefas --- */
+#task-form {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+#task-form input, #task-form select, #task-form button {
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    background-color: var(--secondary-surface-color);
+    color: var(--primary-text-color);
+}
+
+#task-form input::placeholder {
+    color: var(--secondary-text-color);
+}
+
+#task-form input:focus, #task-form select:focus {
+    outline: 2px solid var(--accent-color);
+}
+
+#task-form input[type="text"] {
+    flex-grow: 1;
+}
+
+#task-form button {
+    background-color: var(--accent-color);
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#task-form button:hover {
+    background-color: var(--accent-color-hover);
+}
+
+/* --- Listas de Tarefas --- */
+.tasks-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+@media (min-width: 768px) {
+    .tasks-wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.task-list-section h2 {
+    margin-bottom: 16px;
+    color: var(--primary-text-color);
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--secondary-surface-color);
+    padding: 16px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.task-item.completed .task-text-content {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.task-item:hover {
+    background-color: #3a3a3a;
+}
+
+.task-item input[type="checkbox"] {
+    min-width: 18px;
+    height: 18px;
+    accent-color: var(--success-color);
+    cursor: pointer;
+}
+
+.task-details {
+    flex-grow: 1;
+}
+
+.task-details p {
+    font-size: 1rem;
+}
+
+.task-metadata {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.task-metadata span {
+    font-size: 0.8rem;
+    background-color: #444;
+    padding: 3px 8px;
+    border-radius: 12px;
+    color: var(--secondary-text-color);
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: var(--secondary-text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.delete-btn:hover {
+    color: var(--danger-color);
+}

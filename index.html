@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Planner de Metas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Meu Planner de Metas</h1>
+            <div class="progress-container">
+                <p>Progresso do Dia</p>
+                <div class="progress-bar-background">
+                    <div class="progress-bar-fill" id="progressBar"></div>
+                </div>
+                <span id="progressText">0%</span>
+            </div>
+        </header>
+
+        <main>
+            <form id="task-form">
+                <input type="text" id="task-input" placeholder="O que vamos fazer hoje?" required>
+                <input type="time" id="task-time">
+                <select id="task-category">
+                    <option value="ENEM">ENEM</option>
+                    <option value="Trabalho">Trabalho</option>
+                    <option value="Academia">Academia</option>
+                    <option value="Pessoal">Pessoal</option>
+                    <option value="Pessoal">IF</option>
+                </select>
+                <button type="submit">Adicionar</button>
+            </form>
+
+            <div class="tasks-wrapper">
+                <section class="task-list-section">
+                    <h2>🎯 A Fazer</h2>
+                    <ul id="todo-list">
+                        </ul>
+                </section>
+    
+                <section class="task-list-section">
+                    <h2>✅ Concluídas</h2>
+                    <ul id="completed-list">
+                        </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
